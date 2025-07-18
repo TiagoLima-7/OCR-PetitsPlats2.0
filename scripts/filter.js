@@ -1,6 +1,6 @@
-// Fonction de filtrage des recettes
 export function filterRecipes(recipes, selectedTags, mainSearch) {
-    return recipes.filter(recipe => {
+    console.time("filterRecipes");
+    const filtered = recipes.filter(recipe => {
         // Recherche principale (dans nom, description, ou ingrédients)
         if (mainSearch.length >= 3) {
             const inName = recipe.name.toLowerCase().includes(mainSearch);
@@ -24,4 +24,6 @@ export function filterRecipes(recipes, selectedTags, mainSearch) {
         ) return false;
         return true;
     });
+    console.timeEnd("filterRecipes");
+    return filtered;
 }

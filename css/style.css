@@ -248,6 +248,7 @@ header {
     width: 380px;
     border-radius: 21px !important;
     position: relative;
+    cursor: pointer;
   }
 
   .timeStamp {
@@ -324,4 +325,15 @@ header {
     border: none;
     color: white;
     cursor: pointer;
+}
+
+.alert {
+  font-size: 24px;
+}
+
+.width-80 {
+  width: 80% !important;
+  align-self: center;
+  margin: auto;
+  text-align: center;
 }
