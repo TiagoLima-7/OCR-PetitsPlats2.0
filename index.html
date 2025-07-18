@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS and Bootstrap links -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@200..800&display=swap" rel="stylesheet">    
+    <title>Petits Plats</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="#"><img src="./img/Logo.png" alt="Page d'accueil Petis Plats"></a>
+        </div>
+    </header>
+
+    <!-- Search Area -->
+    <div class="hero">
+        <div class="hero-text">
+            <p class="text-uppercase yellow-text fs-44 ff-anton">chercez parmi plus de 1500 recettes du quotidien, simples et délicieuses</p>
+        </div>
+        <div class="search-field">
+            <input type="text" class="fs-6 ff-manrope grey-text" placeholder="Rechercher une recette, un ingredient, ...">
+            <div class="search-icon-container">
+                <i class="fa-solid fa-magnifying-glass white-text"></i>
+            </div>
+        </div>
+    </div>
+    <!-- Recipes Area -->
+    <div class="recipes-container">
+        <div class="filter-area">
+            <div class="filters ff-manrope">
+                <!-- Ingrédients -->
+                <div class="custom-dropdown" id="dropdown-ingredients">
+                  <div class="dropdown-selected">
+                    <span>Ingrédients</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                  </div>
+                  <div class="dropdown-list">
+                    <div class="dropdown-search">
+                      <input type="text" placeholder="Rechercher un ingrédient..." />
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <ul></ul>
+                  </div>
+                </div>
+                <!-- Appareils -->
+                <div class="custom-dropdown" id="dropdown-appliances">
+                  <div class="dropdown-selected">
+                    <span>Appareils</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                  </div>
+                  <div class="dropdown-list">
+                    <div class="dropdown-search">
+                      <input type="text" placeholder="Rechercher un appareil..." />
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <ul></ul>
+                  </div>
+                </div>
+                <!-- Ustensiles -->
+                <div class="custom-dropdown" id="dropdown-ustensils">
+                  <div class="dropdown-selected">
+                    <span>Ustensiles</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                  </div>
+                  <div class="dropdown-list">
+                    <div class="dropdown-search">
+                      <input type="text" placeholder="Rechercher un ustensile..." />
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <ul></ul>
+                  </div>
+                </div>
+                <span class="ff-anton" id="recipes-count"></span>
+            </div>
+            <div class="recipes-cards-container row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"></div>
+        </div>
+    </div>
+    <script src="./scripts/recipes.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./scripts/script.js"></script>
+    <script src="./scripts/filter.js"></script>
+    <script src="./scripts/app.js" type="module"></script>
+</body>
+</html>
