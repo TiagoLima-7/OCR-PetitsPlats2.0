@@ -474,25 +474,7 @@ function renderSelectedTags() {
 // ----------------------
 // Affichage des recettes filtrées
 // ----------------------
-// function renderRecipes(filteredRecipes) {
-//     const container = document.querySelector('.recipes-cards-container');
-//     container.innerHTML = '';
-//     if (filteredRecipes.length === 0) {
-//         container.innerHTML = '<div class="alert alert-warning">Aucune recette ne contien .</div>';
-//         updateRecipesCount(0);
-//         return;
-//     }
-//     filteredRecipes.map(r => new Recipe(r)).forEach(r => {
-//         container.appendChild(r.toCardElement());
-//     });
-//     updateRecipesCount(filteredRecipes.length);
-// }
-
-// function updateRecipesCount(count) {
-//     const countSpan = document.getElementById('recipes-count');
-//     countSpan.textContent = `${count} recette${count > 1 ? 's' : ''}`;
-// }
-
+// 
 function renderRecipes(filteredRecipes) {
     const container = document.querySelector('.recipes-cards-container');
     container.innerHTML = '';
