@@ -478,7 +478,20 @@ function renderRecipes(filteredRecipes) {
     const container = document.querySelector('.recipes-cards-container');
     container.innerHTML = '';
     if (filteredRecipes.length === 0) {
-        container.innerHTML = '<div class="alert alert-warning">Aucune recette trouvée.</div>';
+        // Construction du message personnalisé
+        let msg;
+        if (mainSearch && mainSearch.length > 0) {
+            msg = `Aucune recette ne contient "${mainSearch}".Vous pouvez essayer "Tarte aux pommes" ou "Poisson"…`;
+        } else {
+            msg = `Aucune recette trouvée. Vous pouvez essayer "Tarte aux pommes" ou "Poisson"…`;
+        }
+
+        // Création du div d'alerte
+        const divAlert = document.createElement('div');
+        divAlert.className = 'alert alert-warning width-80';
+        divAlert.textContent = msg;
+
+        container.appendChild(divAlert);
         updateRecipesCount(0);
         return;
     }
