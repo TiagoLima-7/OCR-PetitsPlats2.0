@@ -601,15 +601,46 @@ function setupDropdownLiveFilter() {
     });
 }
 
-// Fonction centrale pour tout mettre à jour
+
+let prevSelectedTags = {
+    ingredients: [],
+    appliances: [],
+    ustensils: []
+  };
+  let prevMainSearch = "";
+
+
+// // Fonction centrale pour tout mettre à jour
+// function updateRecipesAndUI() {
+//     renderSelectedTags();
+//     // Utilise la fonction importée depuis filters.js
+//     const filtered = filterRecipes(recipes, selectedTags, mainSearch);
+//     renderRecipes(filtered);
+//     fillDropdownsFromRecipes(filtered.length > 0 ? filtered : recipes);
+//     setupDropdownLiveFilter();
+// }
+
+//Fonction centrale pour tout mettre à jour
 function updateRecipesAndUI() {
     renderSelectedTags();
-    // Utilise la fonction importée depuis filters.js
-    const filtered = filterRecipes(recipes, selectedTags, mainSearch);
+
+    // Appelle filterRecipes en passant aussi la mémoire des états précédents
+    const filtered = filterRecipes(recipes, selectedTags, mainSearch, prevSelectedTags, prevMainSearch);
+
     renderRecipes(filtered);
     fillDropdownsFromRecipes(filtered.length > 0 ? filtered : recipes);
     setupDropdownLiveFilter();
+
+    // Mets à jour les états précédents pour le prochain appel
+    // Profondeur limitée ici, adapte selon format réel de selectedTags
+    prevSelectedTags = {
+        ingredients: [...selectedTags.ingredients],
+        appliances: [...selectedTags.appliances],
+        ustensils: [...selectedTags.ustensils],
+    };
+    prevMainSearch = mainSearch;
 }
+
 
 // Initialisation
 function init() {
