@@ -243,12 +243,34 @@ header {
   }
   
 
-  .card {
+  /* .card {
     height: 731px !important;
     width: 380px;
     border-radius: 21px !important;
     position: relative;
-  }
+  } */
+
+  .recipes-cards-container {
+  display: grid !important; /* Remplacement du flex ou row bootstrap */
+  grid-template-columns: repeat(3, 1fr); /* Toujours 3 colonnes égales */
+  gap: 1.5rem; /* Espacement horizontal et vertical */
+  justify-items: center; /* Centrer horizontalement chaque carte */
+  margin-top: 20px !important;
+}
+.col.mb-4 {
+  display: contents !important; /* Pour que la "col" n’ajoute pas de bloc superflu */
+}
+.card {
+  width: 380px;
+  border-radius: 21px !important;
+  position: relative;
+  cursor: pointer;
+  height: auto !important; /* hauteur automatique, pas fixe */
+  min-height: 731px; /* optionnel : garder hauteur minimale souhaitée */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
   .timeStamp {
     position: absolute;
