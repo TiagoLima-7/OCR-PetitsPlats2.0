@@ -51,7 +51,7 @@ class Recipe {
         const card = document.createElement('div');
         card.className = "card shadow-sm";
         const img = document.createElement('img');
-        img.src = `/img/JSON_recipes/${this.image}`;
+        img.src = `./img/JSON_recipes/${this.image}`;
         img.className = "card-img-top";
         img.alt = this.name;
         const cardBody = document.createElement('div');
