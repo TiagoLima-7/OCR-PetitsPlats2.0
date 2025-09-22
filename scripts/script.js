@@ -3,7 +3,7 @@ function updateRecipesCount() {
   // Sélectionne tous les enfants visibles (recettes affichées)
   const container = document.querySelector('.recipes-cards-container');
   // On suppose que chaque recette est dans un élément direct (ex: .card, .recipe-card, etc.)
-  console.log(container.children.length)
+  //console.log(container.children.length)
   //   const visibleRecipes = Array.from(container.children)
 //       .filter(child => child.offsetParent !== null); // visible à l'écran
 
