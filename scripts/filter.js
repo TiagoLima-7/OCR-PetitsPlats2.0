@@ -155,6 +155,13 @@ let currentFilteredList = [];
 // Utilitaires
 const normalize = (str = "") => String(str).toLowerCase().trim();
 
+//Suppression des balises HTML
+const stripHtmlTags = (s = "") =>
+  (s || "").replace(/<\/?[^>]+(>|$)/g, "");
+
+//Sanitize complèt de la recherche: Supprime les balises HTML et normalise
+const sanitizeSearch = (s = "") => normalize(stripHtmlTags(s));
+
 const tagsChanged = (current = [], prev = []) => {
   const currentSet = new Set(current.map(normalize));
   const prevSet = new Set(prev.map(normalize));
@@ -215,8 +222,8 @@ export function filterRecipes(
   // Défauts sûrs si undefined
   const tags = selectedTags || { ingredients: [], ustensils: [], appliances: [] };
   const prevTags = prevSelectedTags || { ingredients: [], ustensils: [], appliances: [] };
-  const currSearch = typeof mainSearch === "string" ? mainSearch.trim() : "";
-  const prevSearch = typeof prevMainSearch === "string" ? prevMainSearch.trim() : "";
+  const currSearch = sanitizeSearch(typeof mainSearch === "string" ? mainSearch.trim() : "");
+  const prevSearch = sanitizeSearch(typeof prevMainSearch === "string" ? prevMainSearch.trim() : "");
 
   // Initialisation au premier appel
   if (currentFilteredList.length === 0) {
