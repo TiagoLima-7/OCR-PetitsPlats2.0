@@ -29,8 +29,9 @@
 }
 
 body {
-    max-width: 1440px;
-    margin:0px auto !important;
+    /* max-width: 1440px;
+    margin:0px auto !important; */
+    background: #c6c6c6 !important;
 }
 
 header {
@@ -50,6 +51,7 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-size: cover;
 }
 
 .hero-text {
@@ -106,8 +108,9 @@ header {
     display: flex;
     gap: 50px;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
+    max-width: 1188px;
 }
 
 

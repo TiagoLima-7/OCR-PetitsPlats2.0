@@ -1,13 +1,27 @@
 // compteur persistant entre appels
 let totalSteps = 0;
 
+//Utilitaires
+const normalize = (str = "") => String(str).toLowerCase().trim();
+
+//Suppresion balises HTML
+const stripHtmlTags = (s = "") =>
+(s || "").replace(/<\/?[^>]+(>|$)/g, "");
+
+//Sanitize complèet : supprime balises HTMl et normalise
+const sanitizeSearch = (s = "") => normalize(stripHtmlTags(s));
+
 export function filterRecipes(recipes, selectedTags, mainSearch) {
+
+  //Nettoyage entrée utilisateur
+  const searchClean = sanitizeSearch(typeof mainSearch === "string" ? mainSearch : "");
+
     // Détection : aucun filtre actif ?
     const noFilter =
         selectedTags.ingredients.length === 0 &&
         selectedTags.ustensils.length === 0 &&
         selectedTags.appliances.length === 0 &&
-        (!mainSearch || mainSearch.trim() === "");
+        (!searchClean || searchClean.trim() === "");
 
     if (noFilter) {
         totalSteps = 0; // remise à zéro quand pas de filtre actif
@@ -26,13 +40,13 @@ export function filterRecipes(recipes, selectedTags, mainSearch) {
 
         // 1. Recherche principale (nom, description, ingrédients)
         if (mainSearch.length >= 3) {
-            const search = mainSearch.toLowerCase();
-            const inName = recipe.name.toLowerCase().includes(search);
-            const inDesc = recipe.description.toLowerCase().includes(search);
+            
+            const inName = recipe.name.toLowerCase().includes(searchClean);
+            const inDesc = recipe.description.toLowerCase().includes(searchClean);
             let inIngredients = false;
             let j = 0;
             while (!inIngredients && j < recipe.ingredients.length) {
-                if (recipe.ingredients[j].ingredient.toLowerCase().includes(search)) {
+                if (recipe.ingredients[j].ingredient.toLowerCase().includes(searchClean)) {
                     inIngredients = true;
                 }
                 j++;
